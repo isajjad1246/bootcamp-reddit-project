@@ -2,7 +2,7 @@ import React from 'react'
 import Comment from './Comment'
 import AddComment from './AddComment'
 import './Post.css'
-
+ 
 const Post = props => {
   const [replyOpen, setReplyOpen] = React.useState(false)
 
@@ -13,15 +13,40 @@ const Post = props => {
     props.onComment(props.post._id, commentData)
   }
 
+  const incrementButton=()=>{
+    this.setState({
+      count: props.post.upVotes - props.post.downVotes +1
+    })
+    
+  }
+
+  const decrementButton=()=>{
+    this.setState({
+      count: props.post.upVotes - props.post.downVotes -1
+    })
+  }
+
+  // incrementButton=()=>{
+  //   this.setState({
+  //     count: props.post.upVotes - props.post.downVotes +1
+  //   })
+  // }
+
+  // decrementButton=()=>{
+  //   this.setState({
+  //     count: props.post.upVotes - props.post.downVotes -1
+  //   })
+  // }
   return (
     <>
       <section className="post">
         <div className="arrows">
-          <button>↑</button>
+          <button id="upVote" onClick={incrementButton}>↑</button>
           <span className="center">
             {props.post.upVotes - props.post.downVotes}
           </span>
-          <button>↓</button>
+          <button id="downVote" onClick={decrementButton}>↓</button>
+          
         </div>
         <div className="post-body">
           <div className="author">Posted by {props.post.author}</div>

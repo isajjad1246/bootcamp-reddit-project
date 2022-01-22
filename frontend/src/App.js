@@ -10,7 +10,7 @@ const App = () => {
   const getPosts = () => {
     fetch('/api/posts')
       .then(res => res.json())
-      .then(data => setPosts(data.posts))
+      .then(data => setPosts(data.posts)) 
   }
 
   React.useEffect(() => {
